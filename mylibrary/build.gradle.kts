@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")
 }
 
 android {
@@ -43,20 +42,3 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            afterEvaluate {
-                from(components["release"]) // Usa il componente 'release' per le librerie Android
-            }
-
-            groupId = "com.github.Tulkas91" // ID del gruppo, usa il tuo username GitHub
-            artifactId = "SupportLibrary" // Nome della libreria/repository su GitHub
-            version = "1.4.13" // Versione della libreria
-        }
-    }
-
-    repositories {
-        mavenLocal() // Pubblica localmente, necessario per JitPack
-    }
-}
